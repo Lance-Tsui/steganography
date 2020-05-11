@@ -22,17 +22,17 @@
     
 		    
 		<form action="" method="POST" enctype="multipart/form-data" name="form">
-			<p align="center">需要解密的图片的密钥 
+			<p align="center">key for decrypting picture
 		      <input type="text" name="keyname" size="20" onKeyDown="if(event.keyCode==13){return false;}" maxlength="16"></p>
 			<p align="center">&nbsp;</p>
-			<p align="center">解密后的文件名(包含后缀名)&nbsp;&nbsp;&nbsp;
+			<p align="center">file name after decryption(need to contain postfix)&nbsp;&nbsp;&nbsp;
 		      <input type="text" name="name_file" size="20" onKeyDown="if(event.keyCode==13){return false;}"></p>
 			<p align="center">&nbsp;</p>
-			<p align="center">需要解密的图片(png格式)&nbsp;&nbsp;&nbsp; 
+			<p align="center">picture that needs to be decrypted(.png format)&nbsp;&nbsp;&nbsp; 
 		      <input type="file" name="up_picture" size="20"><p align="center">&nbsp;&nbsp;&nbsp;
-			<p align="center">请确保图片是被加密过的</p>
+			<p align="center">please ensure that the picture is encrypted</p>
             <p>&nbsp;</p>
-            <p align="center">验证码
+            <p align="center">verify code
               <input type="text" name="code" maxlength="6" onKeyDown="if(event.keyCode==13){return false;}">
             <img  src="check.php" id = "refresh" title="refreshing" align="absmiddle" onClick="document.getElementById('refresh').src='check.php' "></p>
             <p>&nbsp;</p>
@@ -48,7 +48,7 @@
             
             session_start();
             if(@$_POST['code'] != @$_SESSION['img_number']){
-                echo '验证码错误!';
+                echo 'verify code wrong!';
                 echo '<br>';
                 echo '<p align="center"><input name="refresh" type="button" class="button-fourth" onClick="refresh();" value="refresh"></p>';
                 echo '<p align="center"><input name="back" type="button" class="button-fifth" onClick="back();"
@@ -57,10 +57,10 @@
             }
             if(empty($_FILES['up_picture']['name']) || $_POST['name_file'] == ""){
                 if(empty($_FILES['up_picture']['name'])){
-                    echo '图片路径为空!';
+                    echo 'picture link not valid!';
                     echo '<br>';
                 }else if($_POST['name_file'] == ""){
-                    echo '文件路径为空!';
+                    echo 'file link not valid!';
                     echo '<br>';
                 }
                 echo '<p align="center"><input name="refresh" type="button" class="button-fourth" onClick="refresh();" value="refresh"></p>';
@@ -69,7 +69,7 @@
                 return;
             }
             if($_FILES['up_picture']['name'] === $_POST['name_file']){
-                echo '文件名不能相同!';
+                echo 'file name cannot be same!';
                 echo '<br>';
                 echo '<p align="center"><input name="refresh" type="button" class="button-fourth" onClick="refresh();" value="refresh"></p>';
                 echo '<p align="center"><input name="back" type="button" class="button-fifth" onClick="back();"
@@ -82,10 +82,10 @@
             $servername = "127.0.0.1";      //change the ip address to the server's
             $databasename = "nova_eval";
             $username = "root";
-
+            $password = '';
             $keypass=trim($keypass);
             if(strlen($keypass)!=16){
-                echo '密钥长度不准确!';
+                echo 'length of key is not correct!';
                 echo '<br>';
                 echo '<p align="center"><input name="refresh" type="button" class="button-fourth" onClick="refresh();" value="refresh"></p>';
                 echo '<p align="center"><input name="back" type="button" class="button-fifth" onClick="back();"
@@ -93,7 +93,7 @@
                 return;
             }
             try {
-            $conn = new PDO("mysql:host=$servername;dbname=$databasename", $username );
+            $conn = new PDO("mysql:host=$servername;dbname=$databasename", $username,$password);
 
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -128,7 +128,7 @@
             
             
             if($key_valid === false){
-                echo '密钥不对或失效!';
+                echo 'key is wrong or unavailable!';
                 echo '<br>';
                 echo '<p align="center"><input name="refresh" type="button" class="button-fourth" onClick="refresh();" value="refresh"></p>';
                 echo '<p align="center"><input name="back" type="button" class="button-fifth" onClick="back();"
@@ -174,7 +174,7 @@
 
             }
             else{
-                echo '请确保图片为png格式!';
+                echo 'please ensure that the picture is in .png format!';
                 echo '<br>';
                 echo '<p align="center"><input name="refresh" type="button" class="button-fourth" onClick="refresh();" value="refresh"></p>';
                 echo '<p align="center"><input name="back" type="button" class="button-fifth" onClick="back();"
