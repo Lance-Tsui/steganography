@@ -8,4 +8,6 @@ Hint: use in windows server only.
 
 upload nova_eval to MySQL, then reset username and passwords if you want.
 
-Also, remember to open PDO extension. For older versions of PHP, please increase your max_file_size (recommended max_file_size: 32M)
+Also, remember to open PDO extension. For older versions of PHP, 
+
+please increase your max_file_size (recommended max_file_size: 32M)
