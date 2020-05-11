@@ -1,0 +1,101 @@
+.button-first {
+	width: 270px; 
+	height: 40px; 
+	border-width: 0px; 
+	border-radius: 3px; 
+	background: #CCE8CC; 
+	cursor: pointer; 
+	outline: none; 
+	font-family: Microsoft YaHei; 
+	color: black;
+	font-size: 17px;
+
+}
+.button-first:hover { 
+	background: #5599FF;
+}
+
+.button-second {
+	width: 270px; 
+	height: 40px; 
+	border-width: 0px; 
+	border-radius: 3px; 
+	background:#FFB6C1; 
+	cursor: pointer; 
+	outline: none; 
+	font-family: Microsoft YaHei; 
+	color: black;
+	font-size: 17px;
+
+}
+.button-second:hover { 
+	background: #5599FF;
+}
+
+.button-third {
+	width: 270px; 
+	height: 40px; 
+	border-width: 0px; 
+	border-radius: 3px; 
+	background:#AFEEEE; 
+	cursor: pointer; 
+	outline: none; 
+	font-family: Microsoft YaHei; 
+	color: black;
+	font-size: 17px;
+
+}
+.button-third:hover { 
+	background: #5599FF;
+}
+
+.button-fourth {
+	width: 270px; 
+	height: 40px; 
+	border-width: 0px; 
+	border-radius: 3px; 
+	background:#FFFACD; 
+	cursor: pointer; 
+	outline: none; 
+	font-family: Microsoft YaHei; 
+	color: black;
+	font-size: 17px;
+
+}
+.button-fourth:hover { 
+	background: #5599FF;
+}
+
+.button-fifth {
+	width: 270px; 
+	height: 40px; 
+	border-width: 0px; 
+	border-radius: 3px; 
+	background:#FFDEAD; 
+	cursor: pointer; 
+	outline: none; 
+	font-family: Microsoft YaHei; 
+	color: black;
+	font-size: 17px;
+
+}
+.button-fifth:hover { 
+	background: #5599FF;
+}
+
+.button-sixth {
+	width: 270px; 
+	height: 40px; 
+	border-width: 0px; 
+	border-radius: 3px; 
+	background:#FFA07A; 
+	cursor: pointer; 
+	outline: none; 
+	font-family: Microsoft YaHei; 
+	color: black;
+	font-size: 17px;
+
+}
+.button-sixth:hover { 
+	background: #5599FF;
+}
