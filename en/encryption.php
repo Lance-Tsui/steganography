@@ -24,12 +24,12 @@
 		    
 		<form action="" method="POST" enctype="multipart/form-data" name="form">
 		  <p align="center">&nbsp;</p>
-			<p align="center">显示在首页的图片(png或jpg格式)&nbsp;&nbsp;&nbsp; 
+			<p align="center">the picture you want to show(.png or .jpg)&nbsp;&nbsp;&nbsp; 
 			  <input type="file" name="up_picture" size="20"><p align="center">&nbsp;&nbsp;&nbsp;
-			<p align="center">要加密的文件&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			<p align="center">files you want to encrypt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 		      <input type="file" name="up_file" size="20"></p>
 			<p align="center">&nbsp;</p>
-			<p align="center">密钥有效时间(分钟)	
+			<p align="center">set valid time for key	
 			  <select name="duration" size="1">
 			    <option value="5" selected>5</option>
 			    <option value="10">10</option>
@@ -38,7 +38,7 @@
 		      </select>
 			</p>
 			<p>&nbsp;</p>
-            <p align="center">验证码
+            <p align="center">verify code
               <input type="text" name="code" maxlength="6" onKeyDown="if(event.keyCode==13){return false;}">
             <img  src="check.php" id = "refresh" title="refreshing" align="absmiddle" onClick="document.getElementById('refresh').src='check.php' "></p>
             <p>&nbsp;</p>
@@ -54,7 +54,7 @@
             
             session_start();
             if(@$_POST['code'] != @$_SESSION['img_number']){
-                echo '验证码错误!';
+                echo 'verify code wrong!';
                 echo '<br>';
                 echo '<p align="center"><input name="refresh" type="button" class="button-fourth" onClick="refresh();" value="refresh"></p>';
                 echo '<p align="center"><input name="back" type="button" class="button-fifth" onClick="back();"
@@ -63,10 +63,10 @@
             }
             if(empty($_FILES['up_picture']['name']) || empty($_FILES['up_file']['name'])){
                 if(empty($_FILES['up_picture']['name'])){
-                    echo '图片路径为空!';
+                    echo 'picture link not valid!';
                     echo '<br>';
                 }else if(empty($_FILES['up_file']['name'])){
-                    echo '文件路径为空!';
+                    echo 'file link not valid!';
                     echo '<br>';
                 }
                 echo '<p align="center"><input name="refresh" type="button" class="button-fourth" onClick="refresh();" value="refresh"></p>';
@@ -75,7 +75,7 @@
                 return;
             }
             if($_FILES['up_picture']['name'] === $_FILES['up_file']['name']){
-                echo '文件名不能相同!';
+                echo 'file name cannot be same!';
                 echo '<br>';
                 echo '<p align="center"><input name="refresh" type="button" class="button-fourth" onClick="refresh();" value="refresh"></p>';
                 echo '<p align="center"><input name="back" type="button" class="button-fifth" onClick="back();"
@@ -90,13 +90,15 @@
             $pattern = '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLOMNOPQRSTUVWXYZ';
             $key_valid=false;
             $keypass='';
+            $password = '';
             $duration=$_POST['duration'];
             while($key_valid===false){
             try {
-            $conn = new PDO("mysql:host=$servername;dbname=$databasename", $username);
+            $conn = new PDO("mysql:host=$servername;dbname=$databasename", $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);    
             //$sql ="SELECT * FROM `eval_pass` WHERE `value_key` = '" . $keypass . "'";
             $keypass='';
+            
             for ($keynumber = 0; $keynumber<16; $keynumber++) {   
                 $keypass .= $pattern{mt_rand(0,60)};
             }
@@ -141,7 +143,7 @@
                 $realquotient=floor($imagesize/$encryptsize);
                 if($fileinfo['size'] > 0 && $realquotient > 8){
                 try {
-                    $conn = new PDO("mysql:host=$servername;dbname=$databasename", $username );
+                    $conn = new PDO("mysql:host=$servername;dbname=$databasename", $username, $password);
 
                     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     $sql = "INSERT INTO eval_pass (value_key,create_time,duration)
@@ -182,11 +184,11 @@
                 return;  
                 }
                 else{
-                    echo '您的图片宽度为: ' . $imagearr[0] . ' 图片长度为: ' . $imagearr[1];
+                    echo 'your width of picture: ' . $imagearr[0] . ' length of picture: ' . $imagearr[1];
                     echo '<br>';
-                    echo '您的文件大小为:  ' . $fileinfo['size'];
+                    echo 'your size of file:  ' . $fileinfo['size'];
                     echo '<br>';
-                    echo '文件相比于图片过大!';
+                    echo 'file is too large compare to picture!';
                     echo '<br>';
                     unlink($pictureinfo['name']);
                     unlink($fileinfo['name']);
@@ -206,7 +208,7 @@
                 $realquotient=floor($imagesize/$encryptsize);
                 if($fileinfo['size'] > 0 && $realquotient > 8){
                 try {
-                    $conn = new PDO("mysql:host=$servername;dbname=$databasename", $username );
+                    $conn = new PDO("mysql:host=$servername;dbname=$databasename", $username, $password);
 
                     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                     $sql = "INSERT INTO eval_pass (value_key,create_time,duration)
@@ -247,11 +249,11 @@
                 return;  
                 }
                 else{
-                    echo '您的图片宽度为: ' . $imagearr[0] . ' 图片长度为: ' . $imagearr[1];
+                    echo 'your width of picture: ' . $imagearr[0] . ' length of picture: ' . $imagearr[1];
                     echo '<br>';
-                    echo '您的文件大小为:  ' . $fileinfo['size'];
+                    echo 'your file size is:  ' . $fileinfo['size'];
                     echo '<br>';
-                    echo '文件相比于图片过大!';
+                    echo 'file is too large compare to picture!';
                     echo '<br>';
                     unlink($pictureinfo['name']);
                     unlink($fileinfo['name']);
@@ -262,7 +264,7 @@
                 }
             }
             else{
-                echo '请确保上传的图片是.png格式!';
+                echo 'please ensure it is .png format!';
                 echo '<br>';
                 echo '<p align="center"><input name="refresh" type="button" class="button-fourth" onClick="refresh();" value="refresh"></p>';
                 echo '<p align="center"><input name="back" type="button" class="button-fifth" onClick="back();"
