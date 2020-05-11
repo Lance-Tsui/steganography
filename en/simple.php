@@ -41,7 +41,7 @@
 	<div class = "box">
     <div class="first" >
 	 <form action="" method="POST" enctype="multipart/form-data">
-     <p align = "center"><textarea cols = "30" rows = "5" maxlength = "140" name="textarea" id = "textarea">text before encryption/ text after decryption</textarea></p>
+     <p align = "center"><textarea cols = "30" rows = "5" maxlength = "140" name="textarea" id = "textarea">text before encryption/text after decryption</textarea></p>
 	 <p align="center">
 			  <input name="clear" type="button" value="Clear" onclick="ClearTextArea()">
 	 </p>
