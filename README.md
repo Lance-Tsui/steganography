@@ -1,3 +1,3 @@
 # steganography
 
-Powered by me and Zonggao Li @li20034
+Powered by me and Zonggao Li (https://github.com/li20034)
