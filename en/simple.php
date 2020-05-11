@@ -41,7 +41,7 @@
 	<div class = "box">
     <div class="first" >
 	 <form action="" method="POST" enctype="multipart/form-data">
-     <p align = "center"><textarea cols = "30" rows = "5" maxlength = "140" name="textarea" id = "textarea">加密前/解密后文字</textarea></p>
+     <p align = "center"><textarea cols = "30" rows = "5" maxlength = "140" name="textarea" id = "textarea">text before encryption/ text after decryption</textarea></p>
 	 <p align="center">
 			  <input name="clear" type="button" value="Clear" onclick="ClearTextArea()">
 	 </p>
@@ -86,7 +86,7 @@
 <script>
 	function ClearTextArea()
 	{
-		     document.getElementById("textarea").value="加密前/解密后文字";
+		     document.getElementById("textarea").value="text before encryption/text after decryption";
 	} 
     function changepic(obj) {
         //console.log(obj.files[0]);//这里可以获取上传文件的name
@@ -120,11 +120,11 @@
 			$text = trim($text);
 			$randomkeys = randomkeys();
 			if($text == ''){
-				echo '文本不能为空!';
+				echo 'text is empty!';
 				return;
 			}
 			if(empty($_FILES['file']['name'])){
-				echo '图片路径为空!';
+				echo 'picture link is not valid!';
 				return;
 			}
 			$picinfo = $_FILES['file'];
@@ -138,15 +138,15 @@
 			unlink("test.txt");
 			unlink($picinfo['name']);
 			echo "<script type='text/javascript'>document.getElementById('show').src='" . $randomkeys  . "';</script>";
-			echo '加密成功！右侧即可下载加密后图片!';
+			echo 'encryption successful! click image on the right side to download!';
 		}else{
 			if(empty($_FILES['file']['name'])){
-				echo '图片路径为空!';
+				echo 'picture link is not valid!';
 				return;
 			}
 			$picinfo = $_FILES['file'];
 			if(exif_imagetype($_FILES['file']['tmp_name']) != IMAGETYPE_PNG){
-				echo '请确保图片为png格式!';
+				echo 'please ensure the picture is .png format!';
 				return;
 			}
 			move_uploaded_file($picinfo['tmp_name'],$picinfo['name']);
@@ -162,9 +162,9 @@
 			$str = iconv('gbk', 'utf-8', $str);
 			$str = str_replace("\r\n","",$str);
 			}
-			echo "<script type='text/javascript'>document.getElementById('textarea').value= '解密后的文字为: " . $str  . "';</script>";
+			echo "<script type='text/javascript'>document.getElementById('textarea').value= 'text after decryption: " . $str  . "';</script>";
 			echo "<script type='text/javascript'>document.getElementById('show').src='';</script>";
-			echo "解密成功!";
+			echo "decryption successful!";
 			unlink($picinfo['name']);
 			unlink("test_out.txt");
         }
