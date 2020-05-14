@@ -4,7 +4,7 @@
 
 Powered by me and [Zonggao Li](https://github.com/li20034) and [Zeliang Li](https://github.com/LZLawro)
 
-He wrote the C code and I wrote PHP.
+[Zonggao Li](https://github.com/li20034) wrote the C code, while [Zeliang Li](https://github.com/LZLawro) and me wrote PHP.
 
 Hint: use in windows server only. 
 
@@ -16,3 +16,7 @@ please increase your max_file_size (recommended max_file_size: 32M)
 
 
 ## Purpose
+
+As chatting in web is censored by Chinese government, we developed this tool and post it to the web (https://smallcrypt.com)
+
+To free Chinese citizens from censorship. All the functions are free.
