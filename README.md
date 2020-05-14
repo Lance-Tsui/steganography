@@ -1,6 +1,6 @@
 # steganography
 
-Powered by me and Zonggao Li (https://github.com/li20034)
+Powered by me and [Zonggao Li](https://github.com/li20034) and [Zeliang Li](https://github.com/LZLawro)
 
 He wrote the C code and I wrote PHP.
 
