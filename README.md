@@ -17,6 +17,6 @@ please increase your max_file_size (recommended max_file_size: 32M)
 
 ## Purpose
 
-As chatting in web is censored by Chinese government, we developed this tool and post it to the web (https://smallcrypt.com)
+As chatting in web is censored by Chinese government, we developed this tool and post it here.
 
 To free Chinese citizens from censorship. All the functions are free.
