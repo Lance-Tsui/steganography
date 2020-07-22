@@ -21,4 +21,4 @@ As chatting in web is censored by Chinese government, we developed this tool and
 
 To free Chinese citizens (and HKers) from censorship. All the functions are free.
 
-the website is [smallcrypt.com](https://smallcrypt.com)
+
